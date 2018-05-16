@@ -96,8 +96,11 @@ var bot = function () {
         i++;
         if (list.length <= i) {
           console.log("-----------------------------------------");
-          fs.writeFile("/home/LogFiles/log.json", JSON.stringify(chartData, null, 4), 'utf8', function () {
-            bot();
+          fs.chmod("/home/LogFiles/log.json", 0777, (error) => {
+            fs.writeFile("/home/LogFiles/log.json", JSON.stringify(chartData, null, 4), 'utf8', function () {
+              console.log('Changed file permissions');
+              bot();
+            });
           });
           return;
         }
@@ -116,7 +119,6 @@ var bot = function () {
 
 
 }
-
 
 bot();
 
