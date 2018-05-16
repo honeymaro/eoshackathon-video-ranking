@@ -5,8 +5,8 @@ var path = require('path');
 router.get('/', function (req, res, next) {
   var fs = require('fs');
   chartData = {};
-  if (fs.existsSync(path.join(__dirname, "../log.json"))) {
-    var t = fs.readFileSync(path.join(__dirname, "../log.json"));
+  if (fs.existsSync("/home/LogFiles/log.json")) {
+    var t = fs.readFileSync("/home/LogFiles/log.json");
     chartData = JSON.parse(t);
   }
 

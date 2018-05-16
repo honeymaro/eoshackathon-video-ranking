@@ -39,9 +39,10 @@ chartData = {
 }
 
 var fs = require('fs');
-if (fs.existsSync(path.join(__dirname, "log.json"))) {
-  var t = fs.readFileSync(path.join(__dirname, "log.json"));
+if (fs.existsSync("/home/LogFiles/log.json")) {
+  var t = fs.readFileSync("/home/LogFiles/log.json");
   chartData = JSON.parse(t);
+  console.log(t);
 }
 
 var fetchVideoInfo = require('youtube-info');
@@ -95,7 +96,7 @@ var bot = function () {
         i++;
         if (list.length <= i) {
           console.log("-----------------------------------------");
-          fs.writeFile(path.join(__dirname, "log.json"), JSON.stringify(chartData, null, 4), 'utf8', function () {
+          fs.writeFile("/home/LogFiles/log.json", JSON.stringify(chartData, null, 4), 'utf8', function () {
             bot();
           });
           return;
